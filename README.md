@@ -1,42 +1,46 @@
 # ESP32-S3 Rocket Thrust Test Stand
 
-A rocket engine thrust measurement and launch sequencing system built on the ESP32-S3.  
+A rocket engine thrust measurement and launch sequencing system built on the ESP32-S3.
 Collects real-time thrust data via an HX711 load cell amplifier and exports results as CSV.
+
+![](./src/testStand_2.png)
 
 ---
 
 ## 📊 Sample Test Results
 
-| Metric | Value |
-|--------|-------|
-| Peak Thrust | 19.75 kg (193.7 N) |
-| Time to Peak | 2.86 sec |
-| Total Burn Time | ~11.9 sec |
-| Total Impulse | 28.55 kg·s (280.1 N·s) |
+![](./src/cosm.o.s2_25_1765381584_3784617498713962645_78591862730_4.jpg)
+
+| Metric          | Value                    |
+| --------------- | ------------------------ |
+| Peak Thrust     | 19.75 kg (193.7 N)       |
+| Time to Peak    | 2.86 sec                 |
+| Total Burn Time | ~11.9 sec                |
+| Total Impulse   | 28.55 kg·s (280.1 N·s) |
 
 ---
 
 ## 🔧 Hardware
 
-| Component | Role |
-|-----------|------|
-| ESP32-S3 DevKit C | Main controller |
-| HX711 + Load Cell | Thrust measurement |
-| Relay Module | Ignitor control |
-| Buzzer | Countdown audio signal |
-| RGB LED x4 | State indicator |
-| Push Button | Start / stop sequence |
+| Component         | Role                   |
+| ----------------- | ---------------------- |
+| ESP32-S3 DevKit C | Main controller        |
+| HX711 + Load Cell | Thrust measurement     |
+| Relay Module      | Ignitor control        |
+| Buzzer            | Countdown audio signal |
+| RGB LED x4        | State indicator        |
+| Push Button       | Start / stop sequence  |
 
 ### Pin Map
 
-| Module | Signal | GPIO |
-|--------|--------|------|
-| HX711 | DT (Data) | 47 |
-| HX711 | SCK | 48 |
-| Button | I/O | 5 |
-| Relay (Ignitor) | IN | 4 |
-| Buzzer | I/O | 19 |
-| RGB LED | R / G / B | 13 / 12 / 14 |
+| Module          | Signal    | GPIO         |
+| --------------- | --------- | ------------ |
+| HX711           | DT (Data) | 47           |
+| HX711           | SCK       | 48           |
+| Button          | I/O       | 5            |
+| Relay (Ignitor) | IN        | 4            |
+| Buzzer          | I/O       | 19           |
+| RGB LED         | R / G / B | 13 / 12 / 14 |
 
 ---
 
@@ -46,12 +50,12 @@ Collects real-time thrust data via an HX711 load cell amplifier and exports resu
 IDLE → (button press) → COUNTDOWN → (T-0) → FIRING → (button press) → COMPLETE → IDLE
 ```
 
-| State | LED | Buzzer | Ignitor |
-|-------|-----|--------|---------|
-| IDLE | OFF | OFF | OFF |
-| COUNTDOWN | Green blink (1 s) | Short beep (1 s) | OFF |
-| FIRING | Red solid | High-pitch tone x1 | ON |
-| COMPLETE | OFF | Beep x2 | OFF |
+| State     | LED               | Buzzer             | Ignitor |
+| --------- | ----------------- | ------------------ | ------- |
+| IDLE      | OFF               | OFF                | OFF     |
+| COUNTDOWN | Green blink (1 s) | Short beep (1 s)   | OFF     |
+| FIRING    | Red solid         | High-pitch tone x1 | ON      |
+| COMPLETE  | OFF               | Beep x2            | OFF     |
 
 ---
 
@@ -81,6 +85,7 @@ python analysis/plot_thrust.py data/example_thrust_data.csv
 ```
 
 CSV format:
+
 ```
 timestamp_ms,force_kg
 0,-0.0006
@@ -89,6 +94,7 @@ timestamp_ms,force_kg
 ```
 
 To save the graph as an image:
+
 ```bash
 python analysis/plot_thrust.py data/example_thrust_data.csv docs/thrust_result.png
 ```
