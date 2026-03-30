@@ -4,10 +4,11 @@ A rocket engine thrust measurement and launch sequencing system built on the ESP
 Collects real-time thrust data via an HX711 load cell amplifier and exports results as CSV.
 
 ![](./src/testStand_2.png)
+![](./src/cosm.o.s2_25_1765564246_3786149774820070680_78591862730_7%20(1).jpg)
 
 ---
 
-## 📊 Sample Test Results
+## Sample Test Results
 
 ![](./src/cosm.o.s2_25_1765381584_3784617498713962645_78591862730_4.jpg)
 
@@ -20,7 +21,8 @@ Collects real-time thrust data via an HX711 load cell amplifier and exports resu
 
 ---
 
-## 🔧 Hardware
+## Hardware
+![](./src/schematic.png)
 
 | Component         | Role                   |
 | ----------------- | ---------------------- |
@@ -44,7 +46,7 @@ Collects real-time thrust data via an HX711 load cell amplifier and exports resu
 
 ---
 
-## 🔄 Launch Sequence (State Machine)
+## Launch Sequence (State Machine)
 
 ```
 IDLE → (button press) → COUNTDOWN → (T-0) → FIRING → (button press) → COMPLETE → IDLE
@@ -59,7 +61,7 @@ IDLE → (button press) → COUNTDOWN → (T-0) → FIRING → (button press) �
 
 ---
 
-## 🛠️ Development Environment
+## Development Environment
 
 - **Arduino IDE** 2.3.6
 - **ESP32 Board Package** 2.0.18
@@ -77,7 +79,9 @@ Upload Speed    : 921600
 
 ---
 
-## 📈 Data Analysis (Python)
+## Data Analysis (Python)
+
+![](./src/cosm.o.s2_25_1765564246_3786149774736166476_78591862730_6%20(1).jpg)
 
 ```bash
 pip install pandas matplotlib
@@ -101,8 +105,7 @@ python analysis/plot_thrust.py data/example_thrust_data.csv docs/thrust_result.p
 
 ---
 
-## ⚠️ Safety Notes
-
+## _**Notes_
 - LED x4 in parallel may exceed GPIO current limits — brightness is software-capped at 20%
 - A flyback diode across the relay coil is strongly recommended
 - Total current draw approaches USB 2.0 limits (500 mA) — use an external 5 V / 2 A adapter
