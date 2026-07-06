@@ -1,3 +1,5 @@
+# This is out dated version. Click [here](https://github.com/COSMOS-Aero-Engineering/Rocket-Thrust-Test-Stand)
+
 # ESP32-S3 Rocket Thrust Test Stand
 
 A rocket engine thrust measurement and launch sequencing system built on the ESP32-S3.
